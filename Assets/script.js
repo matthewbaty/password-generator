@@ -9,6 +9,7 @@ if ( confirm("Would you like to generate a password?") == true) {
   passwordLengthNum = parseInt(passwordLength);
 }
 
+// user questions for possible password characters
 var lowercase = window.confirm("Would you like your password to include lowercase characters?");
 var uppercase = window.confirm("Would you like your password to include uppercase characters?");
 var numeric = window.confirm("Would you like your password to include numbers?");
@@ -19,8 +20,29 @@ const uppercaseList = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L
 const numbersList = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 const specialList = ["!", "@", "#", "$", "%", "^", "*"];
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+var passwordContainer = [];
+
+if (lowercase === true) {
+  passwordContainer.push(lowercaseList);
+}
+
+if (uppercase === true) {
+  passwordContainer.push(uppercaseList);
+}
+ 
+if (numeric === true) {
+  passwordContainer.push(numbersList);
+}
+
+if (specialChar === true) {
+  passwordContainer.push(specialList);
+}
+
+// this will use lowercase characters if the user did not confirm any prompts 
+if(passwordLength.length === 0) {
+  passwordContainer.push(lowercaseList);
+}
+
 
 // Write password to the #password input
 function writePassword() {
@@ -40,6 +62,8 @@ console.log(passwordLengthNum);
 // return [Math.floor(Math.random(charactersSpecial.length))]
 // return [Math.floor(Math.random(characterNumber.length))]
 
+// // Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
 
 function generatePassword() {
   for (i - 0; i < passwordLengthNum++; i++) {
