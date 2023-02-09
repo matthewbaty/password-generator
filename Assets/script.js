@@ -1,15 +1,11 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-function generatePassword() {
-  for (i - 0; i < passwordLengthNum++; i++) {
-  }
-}
 
 // click button to begin generating password 
 if ( confirm("Would you like to generate a password?") == true) {
   passwordLength = prompt("Between 8 and 128 characters, how many characters would like the password to be?", "8-128");
-
+  
   passwordLengthNum = parseInt(passwordLength);
 }
 
@@ -30,7 +26,7 @@ generateBtn.addEventListener("click", writePassword);
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
+  
   passwordText.value = password;
   
 }
@@ -43,3 +39,21 @@ console.log(passwordLengthNum);
 // return [Math.floor(Math.random(charactersLower.length))]
 // return [Math.floor(Math.random(charactersSpecial.length))]
 // return [Math.floor(Math.random(characterNumber.length))]
+
+
+function generatePassword() {
+  for (i - 0; i < passwordLengthNum++; i++) {
+    if (useUpper == true) {
+      randomUpper();
+    }
+    if (useLower == true) {
+      randomLower();
+    }
+    if (useSpecial == true) {
+      randomSpecial();
+    }
+    if (useNumber == true) {
+      randomNumber();
+    }
+  }
+}
