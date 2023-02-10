@@ -10,11 +10,7 @@ function generatePassword() {
   }
 
   // user questions for possible password characters
-  var lowercase = window.confirm("Would you like your password to include lowercase characters?");
-  var uppercase = window.confirm("Would you like your password to include uppercase characters?");
-  var numeric = window.confirm("Would you like your password to include numbers?");
-  var specialChar = window.confirm("Would you like your password to inlcude special characters?");
-
+  var lowercase, uppercase, numeric, specialChar;
   // character sets
   const lowercaseList = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
   const uppercaseList = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
@@ -22,27 +18,38 @@ function generatePassword() {
   const specialList = ["!", "@", "#", "$", "%", "^", "*"];
 
   var passwordContainer = [];
+  function getPasswordDetails(){
+    lowercase = window.confirm("Would you like your password to include lowercase characters?");
+    uppercase = window.confirm("Would you like your password to include uppercase characters?");
+    numeric = window.confirm("Would you like your password to include numbers?");
+    specialChar = window.confirm("Would you like your password to inlcude special characters?");
+    if (!lowercase && !uppercase && !numeric && !specialChar) {
+      window.alert("You must select at least one character type!");
+      getPasswordDetails();
+    }
 
-  if (lowercase === true) {
-    passwordContainer.push(lowercaseList);
-  }
+    if (lowercase === true) {
+      passwordContainer.push(lowercaseList);
+    }
 
-  if (uppercase === true) {
-    passwordContainer.push(uppercaseList);
-  }
+    if (uppercase === true) {
+      passwordContainer.push(uppercaseList);
+    }
 
-  if (numeric === true) {
-    passwordContainer.push(numbersList);
-  }
+    if (numeric === true) {
+      passwordContainer.push(numbersList);
+    }
 
-  if (specialChar === true) {
-    passwordContainer.push(specialList);
-  }
+    if (specialChar === true) {
+      passwordContainer.push(specialList);
+    }
 
-  // this will use lowercase characters if the user did not confirm any prompts 
-  if (passLength.length === 0) {
-    passwordContainer.push(lowercaseList);
   }
+  getPasswordDetails();
+  // // this will use lowercase characters if the user did not confirm any prompts 
+  // if (passLength.length === 0) {
+  //   passwordContainer.push(lowercaseList);
+  // }
 
   var generatedPassword = "";
   // for loop to create the password
