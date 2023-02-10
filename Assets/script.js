@@ -65,10 +65,6 @@ function writePassword() {
 
 }
 
-// console.log(passwordLengthNum);
-// // for loop to index array for passwordLengthNum
-
-
 // // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
