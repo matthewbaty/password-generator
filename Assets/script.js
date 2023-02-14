@@ -3,12 +3,16 @@ var generateBtn = document.querySelector("#generate");
 
 // whole function to generate password
 function generatePassword() {
-  var passLength = window.prompt("How long do you want your password to be?");
-
-  if (passLength < 8 || passLength > 128) {
-    window.alert("Your password must be between 8 and 128 characters.")
-    return;
+  //built a function that forces the user to select a password length between 8 and 128 characters
+  var passLength
+  function getPasswordLength() {
+    passLength = window.prompt("How many characters do you want your password to be?");
+    if (passLength < 8 || passLength > 128) {
+      window.alert("Your password must be between 8 and 128 characters.")
+      getPasswordLength();
+    }
   }
+  getPasswordLength();
   // declared variables
   var lowercase, uppercase, numeric, specialChar;
   // character sets
@@ -19,7 +23,7 @@ function generatePassword() {
 
   var passwordContainer = [];
   //built function that forces the user to select at least one character type, will continue to loop until one is chosen. 
-  function getPasswordDetails(){
+  function getPasswordDetails() {
     lowercase = window.confirm("Would you like your password to include lowercase characters?");
     uppercase = window.confirm("Would you like your password to include uppercase characters?");
     numeric = window.confirm("Would you like your password to include numbers?");
